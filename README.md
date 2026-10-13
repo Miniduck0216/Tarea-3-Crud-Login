@@ -70,7 +70,7 @@ Está construida con el **patrón MVC** (Modelo, Vista, Controlador) y tiene un 
 
 ![Formulario de nuevo empleado con nombre, correo, cargo, departamento, salario y fecha de ingreso](docs/img/formulario.jpg)
 
-🎥 **Video de demostración:** _[agrega aquí el enlace de Loom o YouTube]_
+🎥 **Video de demostración:** [https://youtu.be/wKrp8GPbZLc](https://youtu.be/wKrp8GPbZLc)
 
 ## Acceso al proyecto
 
