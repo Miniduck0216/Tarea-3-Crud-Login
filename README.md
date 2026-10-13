@@ -1,32 +1,47 @@
-# AdminPro · Sistema de gestión de personal
+<h1 align="center">AdminPro · Sistema de gestión de personal</h1>
 
-![Node.js](https://img.shields.io/badge/Node.js-20%2B-339933?logo=node.js&logoColor=white)
-![Express](https://img.shields.io/badge/Express-4-000000?logo=express&logoColor=white)
-![EJS](https://img.shields.io/badge/Vistas-EJS-B4CA65)
-![SQLite](https://img.shields.io/badge/BD-SQLite-003B57?logo=sqlite&logoColor=white)
-![Estado](https://img.shields.io/badge/estado-terminado-success)
+<p align="center">
+  <img src="docs/img/portada.svg" alt="Portada de AdminPro: ícono de una persona junto al nombre AdminPro y el texto Sistema de gestión de personal, CRUD más Login con MVC" width="700">
+</p>
 
-Aplicación web para una **empresa de administración** que gestiona a su personal: registrar, consultar, editar y dar de baja empleados. Está construida con el **patrón MVC** y tiene un **sistema de login**: solo el personal autenticado puede entrar al módulo de empleados.
-
-> Tarea 3 · Ingeniería Web (UDLA): *Desarrollo de la aplicación (CRUD y Login con MVC)*.
-
----
+<p align="center">
+  <img src="https://img.shields.io/badge/estado-terminado-success" alt="Estado: terminado">
+  <img src="https://img.shields.io/badge/licencia-MIT-blue" alt="Licencia MIT">
+  <img src="https://img.shields.io/badge/Node.js-20%2B-339933?logo=node.js&logoColor=white" alt="Node.js 20 o superior">
+  <img src="https://img.shields.io/badge/Express-4-000000?logo=express&logoColor=white" alt="Express 4">
+  <img src="https://img.shields.io/badge/Vistas-EJS-B4CA65" alt="Vistas con EJS">
+  <img src="https://img.shields.io/badge/BD-SQLite-003B57?logo=sqlite&logoColor=white" alt="Base de datos SQLite">
+</p>
 
 ## Índice
 
-- [Funcionalidades](#funcionalidades)
-- [Tecnologías](#tecnologías)
+- [Descripción del proyecto](#descripción-del-proyecto)
+- [Estado del proyecto](#estado-del-proyecto)
+- [Funcionalidades y demostración](#funcionalidades-y-demostración)
+- [Acceso al proyecto](#acceso-al-proyecto)
+- [Tecnologías utilizadas](#tecnologías-utilizadas)
 - [Arquitectura MVC](#arquitectura-mvc)
 - [Estructura del proyecto](#estructura-del-proyecto)
-- [Instalación y uso](#instalación-y-uso)
 - [Rutas](#rutas)
 - [Seguridad y autenticación](#seguridad-y-autenticación)
 - [Cómo comprobar que la contraseña está cifrada](#cómo-comprobar-que-la-contraseña-está-cifrada)
-- [Autor](#autor)
+- [Personas contribuyentes](#personas-contribuyentes)
+- [Desarrollador](#desarrollador)
+- [Licencia](#licencia)
 
----
+## Descripción del proyecto
 
-## Funcionalidades
+**AdminPro** es una aplicación web para una **empresa de administración** que gestiona a su personal: registrar, consultar, editar y dar de baja empleados, y ver el total de la nómina mensual.
+
+Está construida con el **patrón MVC** (Modelo, Vista, Controlador) y tiene un **sistema de login**: solo el personal autenticado puede entrar al módulo de empleados, y las contraseñas se guardan cifradas.
+
+> Tarea 3 · Ingeniería Web (UDLA): *Desarrollo de la aplicación (CRUD y Login con MVC)*.
+
+## Estado del proyecto
+
+✅ **Terminado.** Cumple todo lo que pide la tarea: CRUD completo, login, rutas protegidas y contraseñas cifradas.
+
+## Funcionalidades y demostración
 
 **Login**
 - Inicio de sesión con usuario y contraseña.
@@ -41,7 +56,62 @@ Aplicación web para una **empresa de administración** que gestiona a su person
 - **Eliminar**: dar de baja a un empleado (con confirmación).
 - Validación en el servidor: campos obligatorios, correo válido y sin repetir, departamento de la lista, salario ≥ 0 y fecha válida.
 
-## Tecnologías
+### Demostración
+
+**Sin sesión no se puede entrar:** al abrir `/empleados` directamente, la app redirige al login.
+
+![Pantalla de login con el aviso "Debes iniciar sesión para ver esa página"](docs/img/login.jpg)
+
+**Listado de empleados** (sección protegida), con buscador y resumen de la nómina:
+
+![Listado de empleados con tarjetas de total de empleados y nómina mensual, buscador y tabla con acciones Editar y Eliminar](docs/img/empleados.jpg)
+
+**Formulario para registrar o editar un empleado:**
+
+![Formulario de nuevo empleado con nombre, correo, cargo, departamento, salario y fecha de ingreso](docs/img/formulario.jpg)
+
+🎥 **Video de demostración:** _[agrega aquí el enlace de Loom o YouTube]_
+
+## Acceso al proyecto
+
+El proyecto se ejecuta en tu computadora (no está publicado en internet).
+
+**Requisitos:** Node.js 20 o superior y npm.
+
+1. Clona el repositorio e instala las dependencias:
+
+   ```bash
+   git clone https://github.com/Miniduck0216/Tarea-3-Crud-Login.git
+   cd Tarea-3-Crud-Login
+   npm install
+   ```
+
+2. Crea el archivo `.env` a partir del ejemplo:
+
+   ```bash
+   cp .env.example .env        # En Windows (cmd): copy .env.example .env
+   ```
+
+3. Arranca la aplicación:
+
+   ```bash
+   npm start                   # o "npm run dev" para reiniciar solo al guardar cambios
+   ```
+
+4. Abre **http://localhost:3000**.
+
+La base de datos `adminpro.db` se crea sola la primera vez, con un usuario administrador y tres empleados de ejemplo.
+
+**Cuenta de prueba**
+
+| Usuario | Contraseña |
+|---|---|
+| `admin` | `Admin123` |
+
+(Se pueden cambiar en `.env` con `ADMIN_USUARIO` y `ADMIN_PASSWORD` antes del primer arranque.)
+
+
+## Tecnologías utilizadas
 
 | Herramienta | Uso |
 |---|---|
@@ -109,42 +179,6 @@ tarea3-crud-login/
 └── README.md
 ```
 
-## Instalación y uso
-
-**Requisitos:** Node.js 20 o superior y npm.
-
-1. Clona el repositorio e instala las dependencias:
-
-   ```bash
-   git clone <url-del-repositorio>
-   cd tarea3-crud-login
-   npm install
-   ```
-
-2. Crea el archivo `.env` a partir del ejemplo:
-
-   ```bash
-   cp .env.example .env        # En Windows (cmd): copy .env.example .env
-   ```
-
-3. Arranca la aplicación:
-
-   ```bash
-   npm start                   # o "npm run dev" para reiniciar solo al guardar cambios
-   ```
-
-4. Abre **http://localhost:3000**.
-
-La base de datos `adminpro.db` se crea sola la primera vez, con un usuario administrador y tres empleados de ejemplo.
-
-**Cuenta de prueba**
-
-| Usuario | Contraseña |
-|---|---|
-| `admin` | `Admin123` |
-
-(Se pueden cambiar en `.env` con `ADMIN_USUARIO` y `ADMIN_PASSWORD` antes del primer arranque.)
-
 ## Rutas
 
 | Método | Ruta | Descripción | Protegida |
@@ -193,6 +227,24 @@ Verás algo así (el hash cambia en cada instalación):
 
 `$2b$` indica bcrypt y `10` el número de rondas. También puedes abrir `adminpro.db` con cualquier visor de SQLite (por ejemplo, la extensión *SQLite Viewer* de VS Code) y revisar la tabla `usuarios`.
 
-## Autor
+## Personas contribuyentes
 
-**Andrés Méndez Cazares** · Ingeniería Web · Universidad de Las Américas (UDLA)
+Proyecto individual. Si quieres aportar una mejora, abre un *issue* o un *pull request* en este repositorio.
+
+## Desarrollador
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/Miniduck0216">
+        <img src="https://github.com/Miniduck0216.png" width="100" alt="Foto de perfil de GitHub de Andrés Méndez Cazares"><br>
+        <sub><b>Andrés Méndez Cazares</b></sub>
+      </a><br>
+      <sub>Ingeniería Web · UDLA</sub>
+    </td>
+  </tr>
+</table>
+
+## Licencia
+
+Este proyecto se distribuye bajo la licencia **MIT**. Consulta el archivo [LICENSE](LICENSE) para más detalles.

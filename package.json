@@ -13,6 +13,7 @@
     "node": ">=20"
   },
   "license": "MIT",
+  "author": "Andrés Méndez Cazares",
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "better-sqlite3": "^11.10.0",
