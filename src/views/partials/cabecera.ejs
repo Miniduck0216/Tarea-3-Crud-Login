@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= titulo %> | AdminPro</title>
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <header class="barra">
+    <a href="/" class="marca">Admin<span>Pro</span></a>
+    <% if (usuario) { %>
+      <nav class="menu">
+        <span class="saludo">Hola, <strong><%= usuario.nombre %></strong></span>
+        <form action="/logout" method="POST">
+          <button type="submit" class="btn btn-borde">Cerrar sesión</button>
+        </form>
+      </nav>
+    <% } %>
+  </header>
+
+  <main class="contenedor">
+    <% if (mensaje) { %>
+      <div class="alerta alerta-<%= mensaje.tipo %>"><%= mensaje.texto %></div>
+    <% } %>

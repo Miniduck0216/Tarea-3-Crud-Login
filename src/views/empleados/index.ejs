@@ -1,0 +1,57 @@
+<%- include('../partials/cabecera') %>
+
+<% const dinero = (n) => '$' + Number(n).toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); %>
+
+<div class="encabezado">
+  <h1>Empleados</h1>
+  <a href="/empleados/nuevo" class="btn btn-primario">+ Nuevo empleado</a>
+</div>
+
+<div class="resumen">
+  <div class="dato"><span>Empleados</span><strong><%= resumen.total %></strong></div>
+  <div class="dato"><span>Nómina mensual</span><strong><%= dinero(resumen.nomina) %></strong></div>
+</div>
+
+<form action="/empleados" method="GET" class="buscador">
+  <input name="buscar" value="<%= buscar %>" placeholder="Buscar por nombre, cargo o departamento">
+  <button type="submit" class="btn btn-borde">Buscar</button>
+  <% if (buscar) { %><a href="/empleados" class="btn btn-texto">Limpiar</a><% } %>
+</form>
+
+<% if (!empleados.length) { %>
+  <p class="vacio">No hay empleados<%= buscar ? ' que coincidan con la búsqueda' : '' %>.</p>
+<% } else { %>
+  <div class="tabla-envoltura">
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th>Empleado</th><th>Cargo</th><th>Departamento</th>
+          <th class="num">Salario</th><th>Ingreso</th><th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% empleados.forEach(e => { %>
+          <tr>
+            <td>
+              <strong><%= e.nombre %></strong>
+              <div class="desc"><%= e.correo %></div>
+            </td>
+            <td><%= e.cargo %></td>
+            <td><span class="etiqueta"><%= e.departamento %></span></td>
+            <td class="num"><%= dinero(e.salario) %></td>
+            <td><%= e.fecha_ingreso.split('-').reverse().join('/') %></td>
+            <td><div class="acciones">
+              <a href="/empleados/<%= e.id %>/editar" class="btn btn-borde btn-chico">Editar</a>
+              <form action="/empleados/<%= e.id %>?_method=DELETE" method="POST"
+                    onsubmit="return confirm('¿Eliminar a este empleado?');">
+                <button type="submit" class="btn btn-peligro btn-chico">Eliminar</button>
+              </form>
+            </div></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } %>
+
+<%- include('../partials/pie') %>

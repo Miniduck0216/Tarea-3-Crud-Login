@@ -1,0 +1,32 @@
+<%- include('../partials/cabecera') %>
+
+<section class="tarjeta tarjeta-auth">
+  <h1>Crear cuenta</h1>
+  <p class="sub">La contraseña se guarda cifrada con bcrypt.</p>
+
+  <% if (errores.length) { %>
+    <div class="alerta alerta-error">
+      <ul><% errores.forEach(e => { %><li><%= e %></li><% }) %></ul>
+    </div>
+  <% } %>
+
+  <form action="/registro" method="POST" class="formulario">
+    <label for="nombre">Nombre</label>
+    <input id="nombre" name="nombre" value="<%= valores.nombre || '' %>" required>
+
+    <label for="usuario">Usuario</label>
+    <input id="usuario" name="usuario" value="<%= valores.usuario || '' %>" required autocomplete="username">
+
+    <label for="password">Contraseña</label>
+    <input id="password" name="password" type="password" minlength="6" required autocomplete="new-password">
+
+    <label for="confirmar">Confirmar contraseña</label>
+    <input id="confirmar" name="confirmar" type="password" minlength="6" required autocomplete="new-password">
+
+    <button type="submit" class="btn btn-primario btn-bloque">Crear cuenta</button>
+  </form>
+
+  <p class="nota">¿Ya tienes cuenta? <a href="/login">Inicia sesión</a></p>
+</section>
+
+<%- include('../partials/pie') %>

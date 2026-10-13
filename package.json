@@ -1,0 +1,25 @@
+{
+  "name": "tarea3-crud-login",
+  "version": "1.0.0",
+  "description": "Aplicación MVC con CRUD de productos y login con contraseñas cifradas (Node.js + Express + EJS + SQLite)",
+  "main": "src/app.js",
+  "private": true,
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node --watch src/app.js",
+    "usuarios": "node scripts/ver-usuarios.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^11.10.0",
+    "dotenv": "^18.0.7",
+    "ejs": "^7.0.1",
+    "express": "^4.22.3",
+    "express-session": "^1.19.0",
+    "method-override": "^3.0.0"
+  }
+}

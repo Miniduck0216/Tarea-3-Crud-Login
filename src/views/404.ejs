@@ -1,0 +1,9 @@
+<%- include('partials/cabecera') %>
+
+<section class="tarjeta tarjeta-auth centrado">
+  <h1><%= titulo %></h1>
+  <p class="sub"><%= typeof error !== 'undefined' ? error : 'La página que buscas no existe.' %></p>
+  <a href="/" class="btn btn-primario">Volver al inicio</a>
+</section>
+
+<%- include('partials/pie') %>
